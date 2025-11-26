@@ -563,8 +563,10 @@ chrome.storage.session.get(function (session_storage_items) {
                             groupModel.upd(storage_name, group, function (answ) {
                                 if (answ.err === 0) {
                                     self.showSyncStorageUsage();
-                                    self.hideGroupLinks(el);
-                                    self.showGroupLinks(storage_name, el);
+                                    if(el.getElementsByClassName('links')[0]){
+                                        self.hideGroupLinks(el);
+                                        self.showGroupLinks(storage_name, el);
+                                    }
                                 } else {
                                     self.showErrorMsg(answ.msg);
                                 }
